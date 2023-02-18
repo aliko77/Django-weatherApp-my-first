@@ -1,17 +1,20 @@
 {% load static %}
 <header>
-  <nav class="navbar navbar-light bg-dark px-4">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex" href="{% url 'index' %}">
+  <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+    <div
+      class="flex flex-wrap justify-between items-center mx-auto"
+    >
+      <a href="{% url 'index' %}" class="flex items-center">
         <img
           src="{% static 'sun.png' %}"
+          class="mr-3 h-9 sm:h-12"
+          width="100%"
           alt="weatherApp-logo"
-          width="48"
-          class="d-inline-block align-text-top"
         />
-        <div class="align-self-center">
-            <span class="text-white mx-2">Hava Durumu</span>
-        </div>
+        <span
+          class="self-center text-lg font-semibold whitespace-nowrap dark:text-white"
+          >Hava Durumu</span
+        >
       </a>
     </div>
   </nav>
