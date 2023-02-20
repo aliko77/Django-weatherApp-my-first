@@ -2,7 +2,7 @@ import requests
 
 
 def fahToCel(temp):
-    return round((temp - 32) * 5 / 9, 2)
+    return round((temp - 32) * 5 / 9)
 
 
 class CityWeather:
@@ -11,4 +11,11 @@ class CityWeather:
         url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=' + APIKEY
         cityWeather = requests.get(url.format(city)).json()
         cityWeather['main']['tempCel'] = fahToCel(cityWeather['main']['temp'])
-        return cityWeather
+
+        weather = {
+            'weather' : cityWeather['weather'][0],
+            'temp' : cityWeather['main'],
+            'wind': cityWeather['wind'],
+            'country': cityWeather['sys']['country']
+        }
+        return weather
