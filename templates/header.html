@@ -1,6 +1,6 @@
 {% load static %}
-<header>
-  <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+<header class="fixed top-0 z-30 w-full shadow-xl">
+  <nav class="px-4 lg:px-6 py-2.5 bg-orange-800">
     <div class="flex flex-wrap justify-between items-center mx-auto">
       <a href="{% url 'index' %}" class="flex items-center">
         <img
@@ -10,15 +10,14 @@
           alt="weatherApp-logo"
         />
         <span
-          class="self-center text-lg font-semibold whitespace-nowrap dark:text-white"
+          class="self-center text-lg font-semibold whitespace-nowrap text-white"
           >Hava Durumu
         </span>
       </a>
-      <div>
-        <span class="text-gray-300">
-            {{location}} {{temperature}}°
-        </span>
-    </div>
+      <div class="space-x-1 text-white">
+        <span>{{location}}</span>
+        <span>{{weather.main.tempCel}}°</span>
+      </div>
     </div>
   </nav>
 </header>
