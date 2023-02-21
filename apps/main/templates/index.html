@@ -4,18 +4,21 @@
     class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen w-full"
   >
     <div class="w-[420px]">
-      <label
-        for="searchInput"
-        class="block mb-2 text-center font-medium text-gray-900"
-        >Şehir veya Posta Kodu</label
-      >
-      <input
-        type="text"
-        id="searchInput"
-        class="bg-gray-50 border shadow border-gray-300 text-gray-900 rounded-lg focus:ring-0 focus:border-cyan-700 block p-2.5 mx-auto w-full"
-        placeholder="..."
-        required
-      />
+      <form action="/weather" method="post">
+        {% csrf_token %} {{form}}
+        <label
+          for="searchInput"
+          class="block mb-2 text-center font-medium text-gray-900"
+          >Şehir veya Posta Kodu</label
+        >
+        <input
+          type="text"
+          id="searchInput"
+          class="bg-gray-50 border shadow border-gray-300 text-gray-900 rounded-lg focus:ring-0 focus:border-cyan-700 block p-2.5 mx-auto w-full"
+          placeholder="..."
+          required
+        />
+      </form>
     </div>
   </div>
 </main>

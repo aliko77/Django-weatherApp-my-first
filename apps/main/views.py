@@ -21,3 +21,20 @@ class index(View):
             template_name='index.html',
             context=context
         )
+
+
+class weather(View):
+    def post(self, request):
+        location = Location.getUserLocation()
+        city_weather = CityWeather.weather(location)
+
+        context = {
+            'location': location,
+            'weather': city_weather
+        }
+
+        return render(
+            request=request,
+            template_name='weather.html',
+            context=context
+        )
