@@ -14,7 +14,7 @@
           >Hava Durumu
         </span>
       </a>
-      {% if location and weather and False %}
+      {% if location and weather %}
       <div class="space-x-1 text-white flex items-center text-lg">
         <img
           src="{% static 'weather-icons/'|add:weather.weather.icon|add:'.png' %}"

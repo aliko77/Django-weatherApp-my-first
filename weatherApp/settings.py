@@ -139,4 +139,4 @@ INTERNAL_IPS = [
 
 GEOIP_PATH = os.path.join(BASE_DIR, 'geoDB')
 
-# NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
