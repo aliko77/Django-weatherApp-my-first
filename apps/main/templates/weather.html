@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 <main class="bg-gradient-to-b from-cyan-700">
   <div
     class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen w-full"
@@ -30,16 +30,42 @@
     </div>
     {% else %}
     <div
-      class="card bg-purple-500 text-white w-[220px] h-[350px] flex flex-col justify-center items-center mt-10"
+      class="card bg-gradient-to-t from-cyan-200 to-white text-cyan-600 flex flex-col justify-center items-center mt-10 rounded p-4 min-w-[340px] w-min"
     >
-      <h4 class="text-2xl">{{weather.weather.description|title}}</h4>
+      <h1 class="text-2xl tracking-wider font-bold">
+        {{weather.city}} &middot {{weather.country}}
+      </h1>
+      <h1 class="text-2xl tracking-wide">
+        {{weather.weather.description|title}}
+      </h1>
       <img
-      src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
-      alt="" class="w-[150px]" />
-      <h2 class="text-5xl font-bold mb-2">{weather.main.temp}&deg;</h2>
-      <p>{weather.weather[0].main}</p>
+        src="{% static 'weather-icons/'|add:weather.weather.icon|add:'.png' %}"
+        class="w-[150px]"
+        alt="weather-icon"
+      />
+      <h1 class="text-5xl font-bold mb-2">
+        {{weather.temp.tempCel}}&deg;
+        <span class="text-xl">({{weather.temp.tempCelFeel}}&deg;)</span>
+      </h1>
     </div>
-    {{weather}} {% endif %}
+    <div
+      class="card bg-gradient-to-t from-gray-600 to-white text-cyan-600 flex flex-col justify-center items-center mt-10 rounded p-4 min-w-[340px] w-min"
+    >
+      <h1 class="text-2xl tracking-wider font-bold">
+        {{weather.city}} &middot {{weather.country}}
+      </h1>
+      <h1 class="text-2xl tracking-wide">Rüzgar</h1>
+      <img
+        src="{% static 'weather-icons/windy.png' %}"
+        class="w-[150px]"
+        alt="weather-icon"
+      />
+      <h1 class="text-5xl font-bold mb-2 text-white">
+        {{weather.wind.speedH}}
+        <span class="text-3xl">({{weather.wind.deg}}&deg;)</span>
+      </h1>
+    </div>
+    {% endif %}
   </div>
 </main>
 {% endblock content %}

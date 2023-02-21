@@ -16,6 +16,11 @@ class CityWeather:
         cityWeather['main']['tempCel'] = fahToCel(
             cityWeather['main']['temp']
         )
+        cityWeather['main']['tempCelFeel'] = fahToCel(
+            cityWeather['main']['feels_like']
+        )
+        cityWeather['wind']['speedH'] = round(
+            cityWeather['wind']['speed'] * 0.44704, 1)
         weather = {
             'weather': cityWeather['weather'][0],
             'temp': cityWeather['main'],
