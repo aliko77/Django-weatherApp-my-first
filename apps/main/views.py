@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .functions.location import Location
 from .functions.cityWeather import CityWeather
@@ -7,13 +7,14 @@ from .functions.cityWeather import CityWeather
 
 
 class index(View):
-    async def get(self, request):
-        location = Location.getUserLocation()
-        city_weather = CityWeather.weather(location)
+    def __init__(self):
+        self.location = Location.getUserLocation()
+        self.city_weather = CityWeather.weather(self.location)
 
+    def get(self, request):
         context = {
-            'location': location,
-            'weather': city_weather
+            'location': self.location,
+            'weather': self.city_weather
         }
 
         return render(
@@ -25,16 +26,17 @@ class index(View):
 
 class weather(View):
     def post(self, request):
-        location = Location.getUserLocation()
-        city_weather = CityWeather.weather(location)
-
+        city_weather = CityWeather.weather(request.POST['city'])
         context = {
-            'location': location,
             'weather': city_weather
         }
-
         return render(
             request=request,
             template_name='weather.html',
             context=context
+        )
+
+    def get(self, request):
+        return redirect(
+            to='index'
         )
