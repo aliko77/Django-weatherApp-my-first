@@ -14,15 +14,15 @@
           >Hava Durumu
         </span>
       </a>
-      {% if location and weather %}
+      {% if location and header_weather %}
       <div class="space-x-1 text-white flex items-center text-lg">
         <img
-          src="{% static 'weather-icons/'|add:weather.weather.icon|add:'.png' %}"
+          src="{% static 'weather-icons/'|add:header_weather.weather.icon|add:'.png' %}"
           class="w-8"
           alt="weather-icon"
         />
         <span>{{location}}</span>
-        <span>{{weather.temp.tempCel}}&deg; · </span>
+        <span>{{header_weather.temp.tempCel}}&deg; · </span>
         <span>{% now "d M - H:i" %}</span>
       </div>
       {% endif %}

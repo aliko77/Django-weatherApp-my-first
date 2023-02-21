@@ -14,7 +14,7 @@ class index(View):
     def get(self, request):
         context = {
             'location': self.location,
-            'weather': self.city_weather
+            'header_weather': self.city_weather
         }
 
         return render(
@@ -25,9 +25,15 @@ class index(View):
 
 
 class weather(View):
+    def __init__(self):
+        self.location = Location.getUserLocation()
+        self.city_weather = CityWeather.weather(self.location)
+
     def post(self, request):
         city_weather = CityWeather.weather(request.POST['city'])
         context = {
+            'location': self.location,
+            'header_weather': self.city_weather,
             'weather': city_weather
         }
         return render(
